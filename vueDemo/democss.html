@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+    <style>
+    .active{
+        width: 100px;
+        height: 100px;
+        background:green;
+    }
+
+
+    .text-danger{
+        background: red;
+    }
+    </style>
+</head>
+<body>
+<!-- 计算属性关键词: computed -->
+<div id="app">
+    <!--可以为 v-bind：class 设置一个对象从而动态切换 -->
+    <div v-bind:class="{ active: isActive  }"></div>
+    <!-- 后面类 的颜色替换了 前者的颜色 -->
+    <div v-bind:class="{ active: isActive , 'text-danger':hasError}"></div>
+    <!--  也可以直接绑定对象-->
+
+    <div v-bind:class="classobject"></div>
+</div>
+    <script>
+    new Vue({
+        el:'#app',
+        data:{
+            isActive: true,
+            hasError: true,
+            error:null
+        },
+            /*classobject:{
+                active: true,
+                'text-danger' :false
+            }  或者最后这种方式*/
+        computed: {
+            classobject:  function(){
+                return {
+                    active: this.isActive && !this.error,
+                    'text-danger': this.error && this.error.type === 'fatal',
+                }
+            }
+        }
+
+
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>input 元素:</p>
+    <input v-model="message" placeholder="编辑这。。。">
+    <p>消息是：{{ message }}</p>
+    <p> textarea 元素：</p>
+    <textarea  v-model="message2" placeholder="多行" cols="30" rows="10"></textarea>
+    <p>textarea消息是：{{message2}}</p>
+</div>
+
+
+<div id="app1">
+    <p>单个复选框</p>
+    <input type="checkbox" id="checkbox" v-model="checked">
+    <p>{{ checked }}</p>
+
+    <p>多个复选框</p>
+    <input type="checkbox" id="runboob" value="Runoob" v-model="checkedNames">
+    <p for="runboob">runboob</p>
+    <input type="checkbox"  id="google" value="Google" v-model="checkedNames">
+    <p for="goolge">Google</p>
+    <input type="checkbox" id="apple" value="apple" v-model="checkedNames">
+    <p for="apple">Apple</p>
+    <br>
+    <span>多复选框选择值为 {{ checkedNames }}</span>
+</div>
+
+<div id="app2">
+    <br>
+    <input type="radio" id="ms" value="ms" v-model="picked">
+    <p for="ms">巨硬</p>
+    <input type="radio" id="douban" value="douban" v-model="picked">
+    <p for="douban">豆瓣</p>
+    <span>选中值为 {{ picked }}</span>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data:{
+            message: '刘港',
+            message2: '刘港\r' +
+            'www.baidu.com'
+        }
+    })
+    new Vue({
+        el: '#app1',
+        data:{
+            checked: false,
+            checkedNames:[]
+        }
+    })
+    new Vue({
+        el: '#app2',
+        data:{
+            picked : 'ms'
+        }
+    })
+</script>
+</body>
+</html>
